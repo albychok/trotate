@@ -1,0 +1,110 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+
+.rotate {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+
+.rotate-product__content {
+    position: relative;
+
+}
+
+.rotate-photos__list,
+.rotate-photos__item {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.rotate-photos {
+    width: 100%;
+    overflow: auto;
+    width: 100%;
+    bottom: 0px;
+    position: absolute;
+    height: 125px;
+}
+
+.rotate-photos__list {
+    display: inline-block;
+}
+
+.rotate-photos__item {
+    float: left;
+    margin: 0 20px 0 0;
+
+}
+
+.rotate-photos__item-link_360 {
+    position: relative;
+}
+
+.rotate-photos__item-link_360:after {
+    background: rgba(255, 255, 255, 0.8) url('http://vincatalog.net/getrotate/images/rotate/rotate_rotate.png') 50% 50% no-repeat;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    content: "";
+    top: 0;
+    left: 0;
+}
+
+.rotate-product__content {
+    padding-bottom: 140px;
+    -webkit-box-sizing: border-box;
+    height: 100%;
+    max-height: 540px;
+
+}
+
+.rotate-product__content-img {
+
+    height: 100%;
+    max-height: 400px;
+    max-width: 510px;
+
+}
+
+.rotate-photos__item-img {
+    display: block;
+    width: 140px;
+    height: 100px;
+}
+
+.rotate-photos__item-link {
+    display: inline-block;
+    border: 2px solid #fff;
+}
+
+.rotate-photos__item-link:hover,
+.rotate-photos__item-link_current {
+    border: 2px solid #7abb08;
+}
+
+.rotate-product__full {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+}
+
+.full__icon {
+    width: 48px;
+    height: 48px;
+    display: inline-block;
+    background: url('http://vincatalog.net/getrotate/images/rotate/rotate_sprite.png') no-repeat 0 0;
+}
+
+.full__link {
+    display: inline-block;
+}
+
+.full__link:hover .full__icon {
+    background-position: -49px 0;
+}
