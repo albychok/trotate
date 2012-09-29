@@ -3,17 +3,16 @@
     margin: 0;
 }
 
-
 .rotate {
     position: relative;
     width: 100%;
     height: 100%;
     text-align: center;
 }
+a{}
 
 .rotate-product__content {
     position: relative;
-
 }
 
 .rotate-photos__list,
