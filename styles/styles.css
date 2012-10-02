@@ -17,6 +17,8 @@
 .rotate-product {
   padding-bottom: 140px;
   height: 100%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 .rotate-product__content {
@@ -43,6 +45,7 @@
 }
 .rotate-photos__list {
   display: inline-block;
+  white-space: nowrap;
 }
 .rotate-photos__item {
   float: left;
@@ -73,17 +76,17 @@
   width: 140px;
   height: 100px;
 }
-.rotate .rotate-full {
+.rotate-full {
   position: absolute;
   right: 15px;
   top: 15px;
 }
-.rotate .rotate-full-link {
+.rotate-full-link {
   background: url("../images/rotate/rotate_sprite.png") no-repeat 0 0;
   display: block;
   width: 48px;
   height: 48px;
 }
-.rotate .rotate-full-link:hover {
+.rotate-full-link:hover {
   background-position: -49px 0;
 }
