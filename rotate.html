@@ -2,15 +2,56 @@
 <html>
 <head>
     <link rel="stylesheet" href="styles/styles.css" media="all">
+    <script>
+        var originalImageWidth;
+        var originalImageHeight;
+        var updateImageSize = function() {
+            var container = document.getElementById('container');
+            var image = document.getElementById('image');
+            var containerWidth = container.clientWidth - 10; // "-10" ???
+            var containerHeight = container.clientHeight - 10; // "-10" ???
+            var containerAspectRatio = containerWidth / containerHeight;
+            var imageAspectRatio = originalImageWidth/ originalImageHeight;
+            var width = 0;
+            var height = 0;
+            var marginLeft = 0;
+            var marginTop = 0;
+            if (containerAspectRatio > imageAspectRatio) {
+// Container wider than image.
+                height = containerHeight;
+                width = originalImageWidth * (containerHeight / originalImageHeight);
+// Place in middle of container. (Optional)
+                marginLeft = (containerWidth - width) / 2;
+            } else {
+// Container higher than image.
+                width = containerWidth;
+                height = originalImageHeight * (containerWidth / originalImageWidth);
+// Place in middle of container. (Optional)
+                marginTop = (containerHeight - height) / 2;
+            }
+            image.style.width = width;
+            image.style.height = height;
+            image.style.marginLeft = marginLeft;
+            image.style.marginTop = marginTop;
+        }
+        window.onresize = updateImageSize;
+        window.onload = function () {
+            var image = document.getElementById('image');
+            originalImageWidth = image.width;
+            originalImageHeight = image.height;
+            updateImageSize();
+        }
+    </script>
+
+
 </head>
 <body>
 <div class="rotate">
     <div class="rotate-product">
-        <div class="rotate-product__content">
+        <div id="container" class="rotate-product__content">
             <div class="rotate-product__content-model"></div>
-            <img class="rotate-product__content-img" src="http://getrotate.com:3000/photo/example_BAG12105_6.jpg" alt=""><img class="rotate-product__content-img" src="" alt=""><img class="rotate-product__content-img" src="" alt=""><img class="rotate-product__content-img" src="" alt=""><img class="rotate-product__content-img" src="" alt=""><img class="rotate-product__content-img" src="" alt=""><img class="rotate-product__content-img" src="" alt="">
+            <img id="image" class="rotate-product__content-img2" src="http://getrotate.com:3000/photo/example_BAG12105_6.jpg" alt=""><img class="rotate-product__content-img" src="" alt=""><img class="rotate-product__content-img" src="" alt=""><img class="rotate-product__content-img" src="" alt=""><img class="rotate-product__content-img" src="" alt=""><img class="rotate-product__content-img" src="" alt=""><img class="rotate-product__content-img" src="" alt="">
         </div>
-
     </div>
     <div class="rotate-photos">
         <ul class="rotate-photos__list">
