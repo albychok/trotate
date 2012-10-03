@@ -48,7 +48,7 @@
   white-space: nowrap;
 }
 .rotate-photos__item {
-  float: left;
+  display: inline;
   margin: 0 20px 0 0;
 }
 .rotate-photos__item-link {
