@@ -15,14 +15,10 @@
   text-align: center;
 }
 .rotate-product {
-  height: 100%;
+  padding-bottom: 140px;
 }
 .rotate-product__content {
   position: relative;
-}
-.rotate-product__content-img {
-  max-width: 100%;
-  max-height: 100%;
 }
 .rotate-product__content-model {
   width: 100%;
@@ -32,7 +28,6 @@
   left: 0;
 }
 .rotate-photos {
-  display: none;
   width: 100%;
   overflow: auto;
   width: 100%;
