@@ -4,14 +4,14 @@
     <link rel="stylesheet" href="styles/styles.css" media="all">
 </head>
 <body>
-<div class="rotate">
+<div id="rotate" class="rotate">
     <div class="rotate-product">
         <div class="rotate-product__content">
             <div class="rotate-product__content-model"></div>
-            <img class="rotate-product__content-img" src="http://getrotate.com:3000/photo/example_BAG12105_6.jpg" alt=""><img class="rotate-product__content-img" src="" alt=""><img class="rotate-product__content-img" src="" alt=""><img class="rotate-product__content-img" src="" alt=""><img class="rotate-product__content-img" src="" alt=""><img class="rotate-product__content-img" src="" alt=""><img class="rotate-product__content-img" src="" alt="">
-        </div>
+        <img id="rotate-product__content-img" class="rotate-product__content-img" height="" width="" src="images/rotate/img_test_bag.jpg" alt=""></div>
     </div>
-    <div class="rotate-photos">
+
+    <div id="rotate-photos" class="rotate-photos">
         <ul class="rotate-photos__list">
             <li class="rotate-photos__item">
                 <a class="rotate-photos__item-link rotate-photos__item-link_360 rotate-photos__item-link_current"
@@ -95,6 +95,47 @@
     </div>
     <div class="rotate-full"><a class="rotate-full-link" href=""></a></div>
 </div>
+<script type="text/javascript">
+
+
+    var rotate = document.getElementById('rotate');
+    var image = document.getElementById('rotate-product__content-img');
+//    var looks = document.getElementById('rotate-photos');
+    var imageMaxWidth = 510; // Max width for the image
+    var imageMaxHeight = 400;    // Max height for the image
+    var imageRatio = 0;
+
+
+
+    var rotateHeight = rotate.clientHeight;
+    var rotateWidth = rotate.clientWidth;
+//    var looksHeight = looks.clientHeight;
+    var looksHeight = 140;
+
+
+    if( rotateHeight >= imageMaxHeight && rotateWidth >= imageMaxWidth) {
+        image.style.height = imageMaxHeight+'px';
+//        image.style.width = imageMaxWidth+'px';
+        imageRatio = rotateHeight/imageMaxHeight;
+        image.style.width = imageMaxHeight * imageRatio+'px';
+    }
+    if( rotateHeight >= imageMaxHeight && rotateWidth < imageMaxWidth) {
+        image.style.width = rotateWidth+'px';
+        imageRatio = rotateWidth/imageMaxWidth;
+        image.style.height = imageMaxHeight * imageRatio+'px';
+    }
+
+    else {
+        var rotateContentHeight = rotateHeight - looksHeight;
+        imageRatio = rotateContentHeight / imageMaxHeight;
+        image.style.height = rotateContentHeight+'px';
+        image.style.width = imageMaxWidth * imageRatio+'px';
+    }
+
+</script>
+
+
+
 
 </body>
 </html>
