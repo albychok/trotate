@@ -115,17 +115,18 @@
 
     if( rotateHeight >= imageMaxHeight && rotateWidth >= imageMaxWidth) {
         image.style.height = imageMaxHeight+'px';
-//        image.style.width = imageMaxWidth+'px';
-        imageRatio = rotateHeight/imageMaxHeight;
-        image.style.width = imageMaxHeight * imageRatio+'px';
+        image.style.width = imageMaxWidth+'px';
     }
-    if( rotateHeight >= imageMaxHeight && rotateWidth < imageMaxWidth) {
+
+    else if( rotateHeight >= imageMaxHeight && rotateWidth < imageMaxWidth) {
         image.style.width = rotateWidth+'px';
         imageRatio = rotateWidth/imageMaxWidth;
         image.style.height = imageMaxHeight * imageRatio+'px';
     }
 
+
     else {
+
         var rotateContentHeight = rotateHeight - looksHeight;
         imageRatio = rotateContentHeight / imageMaxHeight;
         image.style.height = rotateContentHeight+'px';
