@@ -6,12 +6,12 @@
 <body>
 <div id="rotate" class="rotate">
     <div class="rotate-product">
-        <div class="rotate-product__content">
-            <div class="rotate-product__content-model"></div>
-        <img id="rotate-product__content-img" class="rotate-product__content-img" height="" width="" src="images/rotate/img_test_bag.jpg" alt=""></div>
+        <div class="rotate-product__model"></div>
+        <div id="content" class="rotate-product__content">
+            <img class="rotate-product__img" src="images/rotate/img_test_bag.jpg" alt="">
+        </div>
     </div>
-
-    <div id="rotate-photos" class="rotate-photos">
+    <div id="looks" class="rotate-photos">
         <ul class="rotate-photos__list">
             <li class="rotate-photos__item">
                 <a class="rotate-photos__item-link rotate-photos__item-link_360 rotate-photos__item-link_current"
@@ -99,13 +99,11 @@
 
 
     var rotate = document.getElementById('rotate');
-    var image = document.getElementById('rotate-product__content-img');
+    var content = document.getElementById('content');
 //    var looks = document.getElementById('rotate-photos');
-    var imageMaxWidth = 510; // Max width for the image
-    var imageMaxHeight = 400;    // Max height for the image
-    var imageRatio = 0;
-
-
+    var contentMaxWidth = 510; // Max width for the content
+    var contentMaxHeight = 400;    // Max height for the content
+    var contentRatio = 0;
 
     var rotateHeight = rotate.clientHeight;
     var rotateWidth = rotate.clientWidth;
@@ -113,22 +111,22 @@
     var looksHeight = 140;
 
 
-    if( rotateHeight >= imageMaxHeight && rotateWidth >= imageMaxWidth) {
-        image.style.height = imageMaxHeight+'px';
-        image.style.width = imageMaxWidth+'px';
+    if( rotateHeight >= contentMaxHeight && rotateWidth >= contentMaxWidth) {
+        content.style.height = contentMaxHeight+'px';
+        content.style.width = contentMaxWidth+'px';
     }
 
-    else if( rotateHeight > imageMaxHeight && rotateWidth < imageMaxWidth) {
-        image.style.width = rotateWidth+'px';
-        imageRatio = rotateWidth/imageMaxWidth;
-        image.style.height = imageMaxHeight * imageRatio+'px';
+    else if( rotateHeight > contentMaxHeight && rotateWidth < contentMaxWidth) {
+        content.style.width = rotateWidth+'px';
+        contentRatio = rotateWidth/contentMaxWidth;
+        content.style.height = contentMaxHeight * contentRatio+'px';
     }
 
     else {
         var rotateContentHeight = rotateHeight - looksHeight;
-        imageRatio = rotateContentHeight / imageMaxHeight;
-        image.style.height = rotateContentHeight+'px';
-        image.style.width = imageMaxWidth * imageRatio+'px';
+        contentRatio = rotateContentHeight / contentMaxHeight;
+        content.style.height = rotateContentHeight+'px';
+        content.style.width = contentMaxWidth * contentRatio+'px';
     }
 
 </script>
