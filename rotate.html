@@ -2,10 +2,66 @@
 <html>
 <head>
     <link rel="stylesheet" href="styles/styles.css" media="all">
+    <script type="text/javascript">
+        window.onload = function() {
+            var originalContentWidth;
+            var originalContentHeight;
+
+            var container = document.getElementById('product');
+            var content = document.getElementById('content');
+
+            var resize = function() {
+                var containerWidth = container.clientWidth; // Max width for the content
+                var containerHeight = container.clientHeight; // Max height for the content
+                var containerAspectRatio = containerWidth / containerHeight;
+                var contentAspectRatio = originalContentWidth/ originalContentHeight;
+
+                var width = 0;
+                var height = 0;
+                var marginLeft = 0;
+                var marginTop = 0;
+                if (containerAspectRatio > contentAspectRatio) {
+                    // Container wider than image.
+                    height = containerHeight;
+                    width = originalContentWidth * (containerHeight / originalContentHeight);
+                    // Place in middle of container. (Optional)
+                    marginLeft = (containerWidth - width) / 2;
+                } else {
+                    // Container higher than image.
+                    width = containerWidth;
+                    height = originalContentHeight * (containerWidth / originalContentWidth);
+                    // Place in middle of container. (Optional)
+                    marginTop = (containerHeight - height) / 2;
+                }
+                content.style.width = width + 'px';
+                content.style.height = height + 'px';
+                //content.style.marginLeft = marginLeft + 'px';
+                //content.style.marginTop = marginTop + 'px';
+            };
+
+            (function() {
+                function defineOriginalContentSize(imgElement, callback) {
+                    var img = new Image();
+                    img.onload = function() {
+                        originalContentWidth = img.width;
+                        originalContentHeight = img.height;
+                        callback();
+                    }
+                    img.src = imgElement.src;
+                }
+
+                var image = content.children[0];
+                defineOriginalContentSize(image, function() {
+                    window.onresize = resize;
+                    resize();
+                });
+            })();
+        };
+    </script>
 </head>
 <body>
 <div id="rotate" class="rotate">
-    <div class="rotate-product">
+    <div id="product" class="rotate-product">
         <div class="rotate-product__model"></div>
         <div id="content" class="rotate-product__content">
             <img class="rotate-product__img" src="images/rotate/img_test_bag.jpg" alt="">
@@ -95,44 +151,5 @@
     </div>
     <div class="rotate-full"><a class="rotate-full-link" href=""></a></div>
 </div>
-<script type="text/javascript">
-
-
-    var rotate = document.getElementById('rotate');
-    var content = document.getElementById('content');
-//    var looks = document.getElementById('rotate-photos');
-    var contentMaxWidth = 510; // Max width for the content
-    var contentMaxHeight = 400;    // Max height for the content
-    var contentRatio = 0;
-
-    var rotateHeight = rotate.clientHeight;
-    var rotateWidth = rotate.clientWidth;
-//    var looksHeight = looks.clientHeight;
-    var looksHeight = 140;
-
-
-    if( rotateHeight >= contentMaxHeight && rotateWidth >= contentMaxWidth) {
-        content.style.height = contentMaxHeight+'px';
-        content.style.width = contentMaxWidth+'px';
-    }
-
-    else if( rotateHeight > contentMaxHeight && rotateWidth < contentMaxWidth) {
-        content.style.width = rotateWidth+'px';
-        contentRatio = rotateWidth/contentMaxWidth;
-        content.style.height = contentMaxHeight * contentRatio+'px';
-    }
-
-    else {
-        var rotateContentHeight = rotateHeight - looksHeight;
-        contentRatio = rotateContentHeight / contentMaxHeight;
-        content.style.height = rotateContentHeight+'px';
-        content.style.width = contentMaxWidth * contentRatio+'px';
-    }
-
-</script>
-
-
-
-
 </body>
 </html>
